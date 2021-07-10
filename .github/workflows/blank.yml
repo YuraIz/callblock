@@ -33,3 +33,11 @@ jobs:
           export ANDROID_SDK_ROOT=$HOME/libs/android/sdk
           echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > $ANDROID_SDK_ROOT/licenses/android-sdk-license
           gradle assemble
+          
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: /app/build/outputs/apk/release/app-release-unsigned.apk
