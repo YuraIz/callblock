@@ -35,7 +35,7 @@ jobs:
           gradle assemble
           
       - name: Tree
-        run: !
+        run: |
           apt install tree
           tree
           
