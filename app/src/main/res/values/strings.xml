@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CallBlock</string>
+    <string name="toggle_hint">Add CallBlock toggle to quick settings</string>
 </resources>

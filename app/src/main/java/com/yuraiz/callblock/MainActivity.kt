@@ -24,11 +24,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        turnOnCallBlock = findViewById(R.id.turnOnCallBlock)
-        turnOnCallBlock.isChecked = CallBlocker.callBlockIsOn
-        turnOnCallBlock.setOnCheckedChangeListener { _, isChecked ->
-            CallBlocker.callBlockIsOn = isChecked
-        }
         requestRole()
     }
 }
