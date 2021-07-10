@@ -35,7 +35,7 @@ jobs:
           gradle assemble
           
       - name: List
-        run: ls -lA
+        run: ls /app/build/outputs/apk/
           
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
@@ -43,4 +43,4 @@ jobs:
           automatic_release_tag: "latest"
           prerelease: true
           title: "Development Build"
-          files: /app/build/outputs/apk/release/app-release-unsigned.apk
+          files: /app/build/outputs/apk/*/*.apk
