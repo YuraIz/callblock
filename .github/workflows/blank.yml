@@ -34,6 +34,11 @@ jobs:
           echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > $ANDROID_SDK_ROOT/licenses/android-sdk-license
           gradle assemble
           
+      - name: Tree
+        run: !
+          apt install tree
+          tree
+          
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
