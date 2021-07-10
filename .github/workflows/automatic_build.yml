@@ -29,4 +29,4 @@ jobs:
           automatic_release_tag: "latest"
           prerelease: true
           title: "Automatic Build"
-          files: app/build/outputs/apk/release/app-release-unsigned.apk.apk
+          files: app/build/outputs/apk/release/app-release-unsigned.apk
