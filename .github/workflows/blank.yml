@@ -29,6 +29,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Assemble
         run: |
-          mkdir -p $HOME/libs/android/sdk
+          mkdir -p $HOME/libs/android/sdk/licenses
           export ANDROID_SDK_ROOT=$HOME/libs/android/sdk
+          echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > $ANDROID_SDK_ROOT/licenses/android-sdk-license
           gradle assemble
