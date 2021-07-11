@@ -5,11 +5,28 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/allDone"
+        android:id="@+id/allDoneText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/all_done"
+        android:layout_marginTop="24dp"
+        android:text="@string/all_done_text"
         android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/allDoneTitle"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/allDoneTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="239dp"
+        android:text="@string/all_done_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

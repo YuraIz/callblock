@@ -1,22 +1,20 @@
 <resources>
-    <string name="app_name">CallBlock</string>
-    <string name="adding_procedure">
-        <h3>
-            Add CallBlock toggle to quick settings
-        </h3>
-        <p>
-            1. Open quick settings<br/>
-            2. Tap on "Edit buttons"<br/>
-            3. Drag the toggle to quick settings
-        </p>
+    <string name="app_name">
+        CallBlock
     </string>
-    <string name="all_done">
-        <h3>
-            All done
-        </h3>
-        <p>
-            Now you can hide app icon from your launcher
-        </p>
+
+    <string name="adding_procedure_title">
+        Add CallBlock toggle to quick settings
+    </string>
+    <string name="adding_procedure_text">
+        1. Open quick settings\n2. Tap on Edit buttons\n3. Drag the toggle to quick settings
+    </string>
+
+    <string name="all_done_title">
+        All done
+    </string>
+    <string name="all_done_text">
+        Now you can hide app icon from your launcher
     </string>
 
 </resources>
