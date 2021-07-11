@@ -1,22 +1,21 @@
 package com.yuraiz.callblock
 
 import android.app.role.RoleManager
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
-import android.widget.CheckBox
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 
 class MainActivity : AppCompatActivity() {
 
     private fun requestRole() {
         val roleManager = getSystemService(ROLE_SERVICE) as RoleManager
-        val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_CALL_SCREENING)
-        startActivityForResult(intent, 1)
+        roleManager.createRequestRoleIntent(RoleManager.ROLE_CALL_SCREENING)
     }
 
-    companion object{
-        private var last : MainActivity? = null
+    companion object {
+        private var last: MainActivity? = null
         fun update() = last?.recreate()
     }
 
@@ -29,5 +28,9 @@ class MainActivity : AppCompatActivity() {
             setContentView(R.layout.add_toggle)
         }
         requestRole()
+    }
+
+    fun onOpenSourceLicensesClick(view: View) {
+        startActivity(Intent(this, OssLicensesMenuActivity::class.java))
     }
 }

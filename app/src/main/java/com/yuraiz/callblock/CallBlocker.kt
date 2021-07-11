@@ -2,8 +2,6 @@ package com.yuraiz.callblock
 
 import android.telecom.Call
 import android.telecom.CallScreeningService
-import android.telephony.SmsManager
-import android.util.Log
 
 class CallBlocker : CallScreeningService() {
 

@@ -1,10 +1,7 @@
 package com.yuraiz.callblock
 
-import android.graphics.drawable.Icon
-import android.graphics.drawable.VectorDrawable
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
-import androidx.core.content.ContextCompat
 
 class CBTileService : TileService() {
 

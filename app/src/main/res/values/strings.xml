@@ -16,5 +16,6 @@
     <string name="all_done_text">
         Now you can hide app icon from your launcher
     </string>
+    <string name="open_source_licenses">Open source licenses</string>
 
 </resources>
