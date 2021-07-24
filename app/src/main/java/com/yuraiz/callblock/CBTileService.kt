@@ -5,21 +5,47 @@ import android.service.quicksettings.TileService
 
 class CBTileService : TileService() {
 
-    companion object {
-        var added = false
+    private var tileIsAdded: Boolean
+        get() =
+            getSharedPreferences("myPreferences", 0)
+                .getBoolean("tileIsAdded", false)
+
+        set(preference) =
+            getSharedPreferences("myPreferences", 0)
+                .edit()
+                .putBoolean("tileIsAdded", preference)
+                .apply()
+
+    private var callBlockIsOn: Boolean
+        get() =
+            getSharedPreferences("myPreferences", 0)
+                .getBoolean("callBlockIsOn", false)
+
+        set(preference) = getSharedPreferences("myPreferences", 0)
+                .edit()
+                .putBoolean("callBlockIsOn", preference)
+                .apply()
+
+    override fun onStartListening() {
+        if (callBlockIsOn) {
+            qsTile.state = Tile.STATE_ACTIVE
+        } else {
+            qsTile.state = Tile.STATE_INACTIVE
+        }
+        qsTile.updateTile()
+        super.onStartListening()
     }
 
     override fun onTileAdded() {
         super.onTileAdded()
-        added = true
+        tileIsAdded = true
         MainActivity.update()
-        qsTile.state = Tile.STATE_INACTIVE
-        qsTile.updateTile()
     }
 
     override fun onTileRemoved() {
         super.onTileRemoved()
-        added = false
+        tileIsAdded = false
+        callBlockIsOn = false
         MainActivity.update()
     }
 
@@ -27,10 +53,10 @@ class CBTileService : TileService() {
         super.onClick()
         if (qsTile.state == Tile.STATE_INACTIVE) {
             qsTile.state = Tile.STATE_ACTIVE
-            CallBlocker.callBlockIsOn = true
+            callBlockIsOn = true
         } else {
             qsTile.state = Tile.STATE_INACTIVE
-            CallBlocker.callBlockIsOn = false
+            callBlockIsOn = false
         }
 
         qsTile.updateTile()
