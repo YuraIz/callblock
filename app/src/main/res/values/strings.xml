@@ -1,21 +1,26 @@
 <resources>
     <string name="app_name">
-        CallBlock
+        Calligator
     </string>
 
-    <string name="adding_procedure_title">
-        Add CallBlock toggle to quick settings
-    </string>
-    <string name="adding_procedure_text">
-        1. Open quick settings\n2. Tap on Edit buttons\n3. Drag the toggle to quick settings
+    <string name="open_source_licenses">
+        Open source licenses
     </string>
 
-    <string name="all_done_title">
-        All done
+    <string name="big_button">
+        Button to change calligator state
     </string>
-    <string name="all_done_text">
-        Now you can hide app icon from your launcher
+
+    <string name="calligator_is_off">
+        You will receive all calls
     </string>
-    <string name="open_source_licenses">Open source licenses</string>
+
+    <string name="calligator_is_on">
+        You won\'t receive stranger calls
+    </string>
+
+    <string name="calligator_is_not_default">
+        You need to set Calligator as \n "Default caller ID &amp; spam app"
+    </string>
 
 </resources>
