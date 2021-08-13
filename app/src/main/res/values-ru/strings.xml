@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Calligator</string>
+    <string name="big_button">Переключатель calligator</string>
+    <string name="calligator_is_off">Вы будете принимать все звонки</string>
+    <string name="calligator_is_on">Вы не будете принимать звонки от незнакомцев</string>
+    <string name="calligator_is_not_default">Вам нужно задать Caligator в качестве приложения для защиты от спама по умолчанию</string>
+    <string name="open_source_licenses" translatable="false">Лицензии на ПО</string>
+</resources>

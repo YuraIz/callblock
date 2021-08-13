@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
+
 
 class MainActivity : AppCompatActivity() {
     init {
@@ -15,12 +17,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        lateinit var last: MainActivity
+        var last: MainActivity? = null
     }
 
-    private fun requestRole() =
-        (getSystemService(ROLE_SERVICE) as RoleManager)
-            .createRequestRoleIntent(RoleManager.ROLE_CALL_SCREENING)
+    fun requestRole() {
+        val roleManager = getSystemService(ROLE_SERVICE) as RoleManager
+        val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_CALL_SCREENING)
+        resultLauncher.launch(intent)
+    }
+
+    var resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+
+        }
+
 
     private fun isRoleHeld() =
         (getSystemService(ROLE_SERVICE) as RoleManager).isRoleHeld(RoleManager.ROLE_CALL_SCREENING)
@@ -46,6 +56,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.big_button)
         updateButton(findViewById(R.id.switch_cb))
         updateText(findViewById(R.id.info))
+        if (!isRoleHeld()) {
+            requestRole()
+        }
     }
 
     fun onOpenSourceLicensesClick(view: View) {
@@ -57,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         updateButton(view)
         updateText(findViewById(R.id.info))
         if (!isRoleHeld()) {
-            startActivity(requestRole())
+            requestRole()
         }
     }
 

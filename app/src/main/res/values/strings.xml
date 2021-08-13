@@ -1,26 +1,8 @@
 <resources>
-    <string name="app_name">
-        Calligator
-    </string>
-
-    <string name="open_source_licenses">
-        Open source licenses
-    </string>
-
-    <string name="big_button">
-        Button to change calligator state
-    </string>
-
-    <string name="calligator_is_off">
-        You will receive all calls
-    </string>
-
-    <string name="calligator_is_on">
-        You won\'t receive stranger calls
-    </string>
-
-    <string name="calligator_is_not_default">
-        You need to set Calligator as \n "Default caller ID &amp; spam app"
-    </string>
-
+    <string name="app_name">Calligator</string>
+    <string name="open_source_licenses">Open source licenses    </string>
+    <string name="big_button">Button to change calligator state</string>
+    <string name="calligator_is_off">You will receive all calls</string>
+    <string name="calligator_is_on">You won\'t receive stranger calls</string>
+    <string name="calligator_is_not_default">"You need to set Calligator as Default caller ID &amp; spam app"</string>
 </resources>

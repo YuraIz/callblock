@@ -33,8 +33,10 @@ class CBTileService : TileService() {
     }
 
     private fun refreshMainActivity() {
-        MainActivity.last.updateButton(MainActivity.last.findViewById(R.id.switch_cb))
-        MainActivity.last.updateText(MainActivity.last.findViewById(R.id.info))
+        if(MainActivity.last != null) {
+            MainActivity.last!!.updateButton(MainActivity.last!!.findViewById(R.id.switch_cb))
+            MainActivity.last!!.updateText(MainActivity.last!!.findViewById(R.id.info))
+        }
     }
 
     override fun onClick() {
