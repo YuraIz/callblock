@@ -6,4 +6,6 @@
     <string name="calligator_is_on">Вы не будете принимать звонки от незнакомцев</string>
     <string name="calligator_is_not_default">Вам нужно задать Caligator в качестве приложения для защиты от спама по умолчанию</string>
     <string name="open_source_licenses" translatable="false">Лицензии на ПО</string>
+    <string name="read_contacts_rationale">Без доступа к чтению контактам Calligator будет блокировать все звонки на android 10</string>
+    <string name="read_contacts">Доступ к контактам</string>
 </resources>

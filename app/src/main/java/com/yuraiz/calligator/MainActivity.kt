@@ -2,12 +2,16 @@ package com.yuraiz.calligator
 
 import android.app.role.RoleManager
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 
 
@@ -20,20 +24,42 @@ class MainActivity : AppCompatActivity() {
         var last: MainActivity? = null
     }
 
-    fun requestRole() {
+    private fun isRoleHeld() =
+        (getSystemService(ROLE_SERVICE) as RoleManager).isRoleHeld(RoleManager.ROLE_CALL_SCREENING)
+
+    private fun requestRole() {
         val roleManager = getSystemService(ROLE_SERVICE) as RoleManager
         val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_CALL_SCREENING)
         resultLauncher.launch(intent)
     }
 
-    var resultLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-
+    private fun contactsPermission() {
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.Q) {
+            if (checkSelfPermission(android.Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_DENIED) {
+                ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    android.Manifest.permission.READ_CONTACTS
+                )
+                (this.let {
+                    val builder = AlertDialog.Builder(it)
+                    builder.setTitle(R.string.read_contacts)
+                        .setMessage(R.string.read_contacts_rationale)
+                        .setPositiveButton("OK") { _, _ ->
+                            ActivityCompat.requestPermissions(
+                                this,
+                                arrayOf<String>(android.Manifest.permission.READ_CONTACTS),
+                                0,
+                            )
+                        }
+                    builder.create()
+                }).show()
+            }
         }
+    }
 
+    var resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { _ -> }
 
-    private fun isRoleHeld() =
-        (getSystemService(ROLE_SERVICE) as RoleManager).isRoleHeld(RoleManager.ROLE_CALL_SCREENING)
 
     private var callBlockIsOn: Boolean
         get() = getSharedPreferences("myPreferences", 0)
@@ -58,6 +84,7 @@ class MainActivity : AppCompatActivity() {
         updateText(findViewById(R.id.info))
         if (!isRoleHeld()) {
             requestRole()
+            contactsPermission()
         }
     }
 
@@ -95,5 +122,4 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.calligator_is_not_default)
         }
     }
-
 }

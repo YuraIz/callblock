@@ -5,4 +5,6 @@
     <string name="calligator_is_off">You will receive all calls</string>
     <string name="calligator_is_on">You won\'t receive stranger calls</string>
     <string name="calligator_is_not_default">"You need to set Calligator as Default caller ID &amp; spam app"</string>
+    <string name="read_contacts_rationale">Without access to read contacts, Calligator will block all calls on android 10</string>
+    <string name="read_contacts">Access to contacts</string>
 </resources>

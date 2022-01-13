@@ -7,6 +7,7 @@
         android:required="true" />
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" android:maxSdkVersion="30" />
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -16,7 +17,8 @@
         android:theme="@style/Theme.Calligator"
         android:fullBackupContent="@xml/backup_descriptor"
         android:allowBackup="true">
-        <activity android:name="com.yuraiz.calligator.MainActivity">
+        <activity android:name="com.yuraiz.calligator.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,7 +37,8 @@
 
         <service
             android:name="com.yuraiz.calligator.CallBlocker"
-            android:permission="android.permission.BIND_SCREENING_SERVICE">
+            android:permission="android.permission.BIND_SCREENING_SERVICE"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.telecom.CallScreeningService" />
             </intent-filter>
