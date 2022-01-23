@@ -36,23 +36,24 @@ class MainActivity : AppCompatActivity() {
     private fun contactsPermission() {
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.Q) {
             if (checkSelfPermission(android.Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_DENIED) {
-                ActivityCompat.shouldShowRequestPermissionRationale(
+               if( ActivityCompat.shouldShowRequestPermissionRationale(
                     this,
                     android.Manifest.permission.READ_CONTACTS
-                )
-                (this.let {
-                    val builder = AlertDialog.Builder(it)
-                    builder.setTitle(R.string.read_contacts)
-                        .setMessage(R.string.read_contacts_rationale)
-                        .setPositiveButton("OK") { _, _ ->
-                            ActivityCompat.requestPermissions(
-                                this,
-                                arrayOf<String>(android.Manifest.permission.READ_CONTACTS),
-                                0,
-                            )
-                        }
-                    builder.create()
-                }).show()
+                )) {
+                   (this.let {
+                       val builder = AlertDialog.Builder(it)
+                       builder.setTitle(R.string.read_contacts)
+                           .setMessage(R.string.read_contacts_rationale)
+                           .setPositiveButton("OK") { _, _ ->
+                               ActivityCompat.requestPermissions(
+                                   this,
+                                   arrayOf<String>(android.Manifest.permission.READ_CONTACTS),
+                                   0,
+                               )
+                           }
+                       builder.create()
+                   }).show()
+               }
             }
         }
     }
@@ -84,8 +85,8 @@ class MainActivity : AppCompatActivity() {
         updateText(findViewById(R.id.info))
         if (!isRoleHeld()) {
             requestRole()
-            contactsPermission()
         }
+        contactsPermission()
     }
 
     fun onOpenSourceLicensesClick(view: View) {

@@ -42,9 +42,9 @@ class CallBlocker : CallScreeningService() {
             )
 
             val projection = arrayOf(ContactsContract.PhoneLookup.DISPLAY_NAME)
-            val cursor = contentResolver.query(uri, projection, null, null, null)
+            val cursor = contentResolver.query(uri, projection, null, null, null) ?: return false
             return cursor.use {
-                when (cursor!!.moveToFirst()) {
+                when (cursor.moveToFirst()) {
                     true -> true
                     else -> false
                 }
