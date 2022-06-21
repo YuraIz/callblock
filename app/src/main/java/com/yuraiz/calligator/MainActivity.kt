@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 
-
 class MainActivity : AppCompatActivity() {
     init {
         last = this
